@@ -1,0 +1,138 @@
+/* Importing Google Fonts - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+.LoginFrom {
+  margin: auto;
+  margin-top: 50px;
+  max-width: 500px;
+  width: 100%;
+  background: linear-gradient(to left, white 50%, #00aef0 50%);
+  border-radius: 5px;
+  box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.1);
+  & form{
+    padding: 0 35px 25px 35px;
+    & label{
+      color: #FFF;
+      font-size: 18px;
+      position: relative;
+      top: 15px;
+    }
+    & .customPassword{
+      position: relative;
+      & .iconPassword{
+        position: absolute;
+        right: 10px;
+        top: 15px;
+        font-size: 22px;
+        color: #00aef0;
+        cursor: pointer;
+      }
+    }
+  }
+  &_title{
+    height: 60px;
+    border-radius: 5px 5px 0 0;
+    background: linear-gradient(to right, white 50%, #00aef0 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  &_EmailPhone{
+    height: 60px;
+    margin-top: 15px;
+    position: relative;
+    & i{
+        position: absolute;
+        width: 55px;
+        height: 94%;
+        color: #00aef0;
+        font-size: 22px;
+        background: #FFF;
+        border-radius: 5px 0 0 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    & input {
+        outline: none;
+        padding-left: 70px;
+        font-size: 18px;
+      }
+  }
+  &_Password{
+    height: 60px;
+    margin-top: 15px;
+    position: relative;
+    & i{
+        position: absolute;
+        width: 55px;
+        height: 94%;
+        color: #00aef0;
+        font-size: 22px;
+        background: #FFF;
+        border-radius: 5px 0 0 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    & input {
+        outline: none;
+        padding-left: 70px;
+        font-size: 18px;
+      }
+  }
+  &_pass{
+    margin: 15px 0;
+    & a{
+        color: #FFF;
+    }
+  }
+  &_buttonSubmit{
+    height: 60px;
+    margin-top: 15px;
+    position: relative;
+    & input{
+        background: linear-gradient(to right, white 50%, #00aef0 50%);
+        font-size: 22px;
+        font-weight: bold;
+        text-align: center;
+        padding: 0 !important;
+        border: 0;
+    }
+  }
+  & .title_Social{
+    margin-top: 20px;
+  }
+  &_social{
+    display: flex;
+    justify-content: center;
+    & .icon{
+      font-size: 25px;
+      width: 30px;
+      height: 30px;
+      margin: 10px;
+      cursor: pointer;
+    }
+    & i:first-of-type{
+      color: #FFF;
+    }
+    & i:last-of-type{
+      color: #00aef0;
+    }
+  }
+}
+input::placeholder {
+  color: #999;
+}
