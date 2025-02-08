@@ -11,6 +11,7 @@ import './Login.scss';
 import { FormattedMessage } from 'react-intl';
 
 import adminService from '../../services/adminService';
+import { handleLoginApi } from '../../services/userService';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons';
@@ -38,6 +39,44 @@ class Login extends Component {
          password: event.target.value,
       })
    }
+
+   handleLogin = async () => {
+      this.setState({
+         errMessage: ''
+      })
+      // console.log('username ', this.state.username, 'password: ', this.state.password)
+      // console.log('all ', this.state)
+
+      try {
+         // console.log("Calling handleLoginApi...");
+         let data = await handleLoginApi(this.state.username, this.state.password)
+         // console.log("data 1:", data)
+         // console.log("Mess 1:", data.data.message)
+         // console.log("Mess 2:", data.message)
+         if (data && data.data.errCode !== 0) {
+            console.log("errCode !0")
+            console.log("data:", data)
+            this.setState({
+               errMessage: data.data.message
+            })
+         }
+         if (data && data.data.errCode === 0) {
+            console.log("errCode 0", data.data.user)
+            this.props.userLoginSuccess(data.user);
+            console.log("Login Thanh cong")
+         }
+      } catch (e) {
+         if (e.response) {
+            if (e.response.data) {
+               this.setState({
+                  errMessage: e.response.data.message
+               })
+            }
+         }
+         console.log("Nguyen: ", e.response)
+      }
+   }
+
 
    handleShowHidePassword = () => {
       this.setState({
@@ -80,7 +119,6 @@ class Login extends Component {
                                  :
                                  <FontAwesomeIcon icon={faEyeSlash} />
                            }
-                           {/* <i class={this.state.isShowPassword ? 'fa-solid fa-eye iconPassword' : 'fa-solid fa-eye-low-vision iconPassword'}></i> */}
                         </span>
                      </div>
                   </div>
@@ -89,6 +127,7 @@ class Login extends Component {
                   </div>
                   <div className="LoginFrom_pass"><a href="#">Forgot password?</a></div>
                   <div className="row LoginFrom_buttonSubmit">
+
                      <input type="submit" value="Login" onClick={() => { this.handleLogin() }} />
                   </div>
                   <p className='text-center title_Social'>Or login with</p>
@@ -113,7 +152,7 @@ const mapDispatchToProps = dispatch => {
    return {
       navigate: (path) => dispatch(push(path)),
       // userLoginFail: () => dispatch(actions.adminLoginFail()),
-      // userLoginSuccess: (userInfo) => dispatch(actions.userLoginSuccess(userInfo))
+      userLoginSuccess: (userInfo) => dispatch(actions.userLoginSuccess(userInfo))
    };
 };
 
