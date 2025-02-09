@@ -35,3 +35,44 @@
       color: red;
    }
 }
+.model-user-container{
+
+   .modal-content{
+      .modal-header{
+         button{
+            background-color: transparent !important;
+            color: #FFF;
+            border: none;
+            font-size: 25px;
+         }
+      }
+   }
+
+   .model-user-body{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+
+      .input-container{
+         display: flex;
+         flex-direction: column;
+         width: 48%;
+         &.max-w-input-100{
+            width: 99%;
+         }
+         &.max-w-input-68{
+            width: 66%;
+         }
+         &.max-w-input-30{
+            width: 30%;
+         }
+         input{
+            border-radius: 3px;
+            height: 50px;
+            outline: none;
+            padding: 0 10px;
+            border: 1px solid rgb(81, 183, 196);
+         }
+      }
+   }
+}
